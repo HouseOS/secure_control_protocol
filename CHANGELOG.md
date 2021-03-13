@@ -1,3 +1,6 @@
+# 0.0.8
+ * Return measured value in doMeasure
+ * Fix discover response parsing
 # 0.0.7
  * Implement device rename command 
 

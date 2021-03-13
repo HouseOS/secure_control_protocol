@@ -1,3 +1,10 @@
+scp-client (0.0.8-0) unstable; urgency=medium
+
+  * Return measured value in doMeasure
+  * Fix discover response parsing
+
+ -- Benjamin Schilling <benjamin.schilling33@gmail.com>  Sat, 13 Mar 2021 12:43:00 +0100
+
 scp-client (0.0.7-0) unstable; urgency=medium
 
    * Implement device rename command 

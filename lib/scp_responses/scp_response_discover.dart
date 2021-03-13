@@ -61,7 +61,7 @@ class ScpResponseDiscover {
       );
 
       String password = null;
-      if (devices != null) {
+      if (devices != null && devices.length > 0) {
         password = devices
             .firstWhere(
                 (element) => element.deviceId == discoverResponse.deviceId)

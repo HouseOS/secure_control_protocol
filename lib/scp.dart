@@ -12,6 +12,7 @@ import 'dart:io';
 
 // SCP
 import 'package:secure_control_protocol/scp_response_parser.dart';
+import 'package:secure_control_protocol/scp_responses/scp_response_measure.dart';
 import 'package:secure_control_protocol/scp_status.dart';
 import 'package:secure_control_protocol/scp_message_sender.dart';
 import 'package:secure_control_protocol/scp_device.dart';
@@ -287,17 +288,19 @@ class Scp {
     }
   }
 
-  void measure(String deviceId, String action) async {
+  Future<String> measure(String deviceId, String action) async {
     log('do measure for device: $deviceId');
-    final measureResponse = await ScpMessageSender.sendMeasure(
+    final ScpResponseMeasure measureResponse = await ScpMessageSender.sendMeasure(
         knownDevices.firstWhere((element) => element.deviceId == deviceId),
         action);
-    log(measureResponse);
+    log(measureResponse.toString());
     if (measureResponse != null &&
         measureResponse == ScpStatus.RESULT_SUCCESS) {
       log('Successfully send measure $action to $deviceId');
+      return measureResponse.value;
     } else {
       log('Failed to send measure $action to $deviceId');
+      return '';
     }
   }
 
